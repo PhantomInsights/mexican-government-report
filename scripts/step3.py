@@ -5,7 +5,6 @@ It is advised to only run one function at a time.
 
 import geopandas
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -92,15 +91,15 @@ def plot_most_used_words(df):
     """
 
     # Small fix for programa and programar.
-    df.loc[df['lemma_lower'] == "programa", "lemma_lower"] = "programar"
+    df.loc[df["lemma_lower"] == "programa", "lemma_lower"] = "programar"
 
     # Only take into account alphabet tokens that are longer than 1 character and are not stop words.
     words = df[(df["is_alphabet"] == True) & (df["is_stopword"] == False) & (
         df["lemma_lower"].str.len() > 1)]["lemma_lower"].value_counts()[:20]
 
     sns.barplot(x=words.values, y=words.index, palette="Blues_d", linewidth=0)
-    plt.xlabel("Numero de Ocurrencias (Normalizado)")
-    plt.title("Palabras más Frecuentes")
+    plt.xlabel("Occurrences Count")
+    plt.title("Most Frequent Words")
     plt.savefig("words_counts.png", facecolor="#5C0E10")
 
 
@@ -143,7 +142,7 @@ def get_state_counts(df):
         total_count += state_count
 
     state_counts = sorted(state_counts, key=lambda x: x[1])
-    
+
     print(state_counts)
     print(total_count)
 
@@ -181,7 +180,7 @@ def plot_map(df):
     plt.rcParams["figure.figsize"] = [12, 8]
 
     mexico_df.plot(column="count", cmap="plasma", legend=True)
-    plt.title("Menciones por Entidad Federativa")
+    plt.title("Mentions by State")
     plt.axis("off")
     plt.tight_layout()
     plt.savefig("map.png", facecolor="#5C0E10")
@@ -230,9 +229,9 @@ def plot_sentiment_analysis(df):
     plt.yticks(np.arange(-12, 12, 2), yticks_labels)
 
     plt.bar(df.index, df["score"], color=colors, linewidth=0)
-    plt.xlabel("Número de Enunciado")
-    plt.ylabel("Puntuación")
-    plt.title("Análisis de Sentimiento")
+    plt.xlabel("Sentence Number")
+    plt.ylabel("Score")
+    plt.title("Sentiment Analysis")
     plt.savefig("sentiment_analysis.png", facecolor="#5C0E10")
 
 

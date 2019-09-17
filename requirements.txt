@@ -1,0 +1,8 @@
+descartes
+geopandas
+matplotlib
+numpy
+pandas
+PyPDF2
+seaborn
+spacy

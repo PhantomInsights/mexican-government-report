@@ -57,7 +57,7 @@ def extract_text():
         full_text += page_text.replace("\n", "")
         pdf_page_number += 1
 
-    # There's a small issue when decoding the PDF.
+    # There's a small issue when decoding the PDF file.
     # We will manually fix all the weird characters
     # with their correct equivalents.
     for item, replacement in CHARACTERS.items():
