@@ -434,7 +434,7 @@ plt.show()
 
 In previous projects I have used some `NLP`  workflows, such as tokenizing words and sentences, but this time I wanted to do something a bit more complex.
 
-I learned several new things and their best practices. This new knowdledege will come in handy for future projects.
+I learned several new things and their best practices. This new knowdledge will come in handy for future projects.
 
 The next steps are to build a `Machine Learning` model for sentiment analysis and evaluate next year's report with it.
 
