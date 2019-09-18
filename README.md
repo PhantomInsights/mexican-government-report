@@ -1,6 +1,6 @@
 # Mexican Government Report Text Analysis
 
-In this repository I will document the complete process of extracting text from a PDF file, cleaning it, passing it through a `NLP` pipeline and presenting the results with graphs and plots.
+In this repository, I will document the complete process of extracting text from a PDF file, cleaning it, passing it through an `NLP` pipeline and presenting the results with graphs and plots.
 
 The PDF file is quite special, it is the government report of 2019, which was released the 1st of September. This PDF file can be found in the data folder.
 
@@ -9,7 +9,7 @@ The PDF file is quite special, it is the government report of 2019, which was re
 This project uses the following Python libraries
 
 * `PyPDF2` : For extracting text from PDF files.
-* `spaCy` : For passing the extracted text into a NLP pipeline.
+* `spaCy` : For passing the extracted text into an NLP pipeline.
 * `NumPy` : For fast matrix operations.
 * `pandas` : For analysing and getting insights from datasets.
 * `matplotlib` : For creating graphs and plots.
@@ -31,9 +31,9 @@ For your convenience I have added the PDF file in the data folder.
 
 Extracting text from PDF files is a bit unreliable, you lose the original formatting and there are times you don't get any text at all.
 
-Fortunately this PDF file is simple enough that extracting the text wasn't that complex but I encountered some challenges that I will go in more detail in this section.
+Fortunately, this PDF file is simple enough that extracting the text wasn't that complex but I encountered some challenges that I will go in more detail in this section.
 
-For this task we will use `PyPDF2` which is a well known PDF library.
+For this task, we will use `PyPDF2` which is a well-known PDF library.
 
 ```python
 reader = PyPDF2.PdfFileReader("informe.pdf")
@@ -126,7 +126,7 @@ doc = nlp(corpus)
 
 *Note: This script takes a few minutes to complete, you will also need a few gigabytes of RAM to properly run it, feel free to skip it and use the csv files in the data folder.*
 
-Once everything is loaded we will just save the results into csv files.
+Once everything is loaded, we will just save the results into csv files.
 
 ### Text Tokens
 
@@ -147,7 +147,7 @@ csv.writer(open("./tokens.csv", "w", encoding="utf-8",
 
 It is important to note that a `token` is not always a word, it can be a punctuation mark or a number. That's why we also save the `is_alpha` property so we can later filter out non-alphabetic tokens.
 
-We also saved the loweecase form of all tokens and lemmas so we don't have to do it everytime we want to process them with `pandas`.
+We also saved the lowercase form of all tokens and lemmas so we don't have to do it every time we want to process them with `pandas`.
 
 ### Text Entities
 
@@ -383,7 +383,7 @@ This method has a few considerations, the most important is that it doesn't know
 
 The only way around this is to train a model and use `Machine Learning` to evaluate the sentences with it.
 
-Unfortunately this is a time-consuming task and we will have to use the other method.
+Unfortunately, this is a time-consuming task and we will have to use the other method.
 
 The first thing to do is to load the sentences csv file and only take into account scores between -10 and 10. There were very few cases where the score goes beyond those boundaries.
 
@@ -432,7 +432,7 @@ plt.show()
 
 ## Conclusion
 
-In previous projects I have used some `NLP`  workflows, such as tokenizing words and sentences, but this time I wanted to do something a bit more complex.
+In previous projects, I have used some `NLP`  workflows, such as tokenizing words and sentences, but this time I wanted to do something a bit more complex.
 
 I learned several new things and their best practices. This new knowledge will come in handy for future projects.
 
