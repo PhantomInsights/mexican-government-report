@@ -3,6 +3,8 @@ This script reads the government report, extracts, cleans and saves
 all the text so it can be analyzed in the next scripts.
 """
 
+import re
+
 import PyPDF2
 
 
@@ -64,8 +66,7 @@ def extract_text():
         full_text = full_text.replace(item, replacement)
 
     # We remove all extra white spaces.
-    full_text = full_text.replace("  ", " ").replace(
-        "  ", " ").replace("  ", " ")
+    full_text = re.sub(" +", " ", full_text)
 
     # Finally we save the cleaned text into a .txt file.
     with open("transcript_clean.txt", "w", encoding="utf-8") as temp_file:

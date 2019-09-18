@@ -44,11 +44,13 @@ def get_tokens(doc):
                   "part_of_speech", "is_alphabet", "is_stopword"]]
 
     for token in doc:
-        data_list.append([token.text, token.lower_, token.lemma_, token.lemma_.lower(
-        ), token.pos_, token.is_alpha, token.is_stop])
+        data_list.append([
+            token.text, token.lower_, token.lemma_, token.lemma_.lower(),
+            token.pos_, token.is_alpha, token.is_stop
+        ])
 
-    csv.writer(open("./tokens.csv", "w", encoding="utf-8",
-                    newline="")).writerows(data_list)
+    with open("./tokens.csv", "w", encoding="utf-8", newline="") as tokens_file:
+        csv.writer(tokens_file).writerows(data_list)
 
 
 def get_entities(doc):
@@ -66,8 +68,8 @@ def get_entities(doc):
     for ent in doc.ents:
         data_list.append([ent.text, ent.lower_, ent.label_])
 
-    csv.writer(open("./entities.csv", "w", encoding="utf-8",
-                    newline="")).writerows(data_list)
+    with open("./entities.csv", "w", encoding="utf-8", newline="") as entities_file:
+        csv.writer(entities_file).writerows(data_list)
 
 
 def get_sentences(doc):
@@ -116,8 +118,9 @@ def get_sentences(doc):
 
             data_list.append([sent.text, score])
 
-    csv.writer(open("./sentences.csv", "w", encoding="utf-8",
-                    newline="")).writerows(data_list)
+
+    with open("./sentences.csv", "w", encoding="utf-8", newline="") as sentences_file:
+        csv.writer(sentences_file).writerows(data_list)
 
 
 if __name__ == "__main__":
