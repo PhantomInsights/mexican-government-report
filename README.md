@@ -105,7 +105,7 @@ With the transcript cleaned and well encoded we are ready to run it through a `N
 
 For this step we will make use of `spaCy`, this library is very well built and easy to use.
 
-After installing it with `pip` you must install the Spanish model. You can do it by running the following command on your Terminal or CMD:
+After installing it with `pip` you must install the Spanish model. You can do it by running the following command on your CMD or Terminal:
 
 `python -m spacy download es_core_news_md`
 
@@ -124,7 +124,7 @@ nlp.max_length = len(corpus)
 doc = nlp(corpus)
 ```
 
-*Note: This script takes a few minutes to complete, you will aslo need a few gigabytes of RAM to properly run it, feel free to skip it and use the csv files in the data folder.*
+*Note: This script takes a few minutes to complete, you will also need a few gigabytes of RAM to properly run it, feel free to skip it and use the csv files in the data folder.*
 
 Once everything is loaded we will just save the results into csv files.
 
@@ -222,9 +222,9 @@ After running the 3 functions we will have 3 csv files ready to be analyzed with
 
 ## Plotting the Data
 
-For creating the plots we will use seaborn and matplotlib, the reason for this is that seaborn applies some subtle yet nice looking effects to the plots.
+For creating the plots we will use `seaborn` and `matplotlib`, the reason for this is that `seaborn` applies some subtle yet nice looking effects to the plots.
 
-In this project we are going to use bar plots (1 horizontal and 1 vertical) which are very helpful for comparing different values.
+In this project we are going to use bar plots (1 horizontal and 1 vertical) which are very helpful for comparing different values of the same category.
 
 To plot the map we will use `geopandas` and a shape file of México.
 
@@ -267,7 +267,7 @@ words = df[(df["is_alphabet"] == True) & (df["is_stopword"] == False) & (
     df["lemma_lower"].str.len() > 1)]["lemma_lower"].value_counts()[:20]
 ```
 
-We will use a `seaborn` barplot, which allow us to apply a gradient to the color values without any effort.
+We will use a `seaborn` barplot, which allows us to apply a gradient to the color values without any effort.
 
 ```python
 sns.barplot(x=words.values, y=words.index, palette="Blues_d", linewidth=0)
@@ -276,8 +276,8 @@ sns.barplot(x=words.values, y=words.index, palette="Blues_d", linewidth=0)
 We add the final customizations.
 
 ```python
-plt.xlabel("Numero de Ocurrencias (Normalizado)")
-plt.title("Palabras más Frecuentes")
+plt.xlabel("Ocurrences Count")
+plt.title("Most Frequent Words")
 plt.show()
 ```
 
@@ -310,9 +310,9 @@ In the table below I have added the lemmas, their counts and their closest Engli
 
 ### Mentions per State
 
-If you are on Windows you will require to use `anaconda` which is a `Python` distribution that comes bundled with hundreds of data science oriented libraries.
+If you are on Windows you will require to use `Anaconda` which is a `Python` distribution that comes bundled with hundreds of data science oriented libraries.
 
-After you install `Anaconda` you will require to install 2 packages, you can do this by running these commands on your CMD/Terminal.
+After you install `Anaconda` you will require to install 2 packages, you can do this by running these commands on your CMD or Terminal.
 
 ```
 conda install -c conda-forge geopandas
@@ -334,11 +334,11 @@ df = pd.read_csv("./data/entities.csv")
 mexico_df = geopandas.read_file("./mexicostates")
 ```
 
-The shape file is loadad as a folder instead of an specfic file.
+The shape file is loaded as a folder instead of an specific file.
 
 Now we will iterate over all our states, but there are some details. The shape file contains the state names without accent marks and uses the old name of Ciudad de México (it was named Distrito Federal).
 
-Before modifying the shape file `DataFrame` we 'clean' the state name so they can match.
+Before modifying the shape file `DataFrame` we 'clean' the state name so they can be matched.
 
 ```python
 for state in STATES:
@@ -392,9 +392,9 @@ df = pd.read_csv("./data/sentences.csv")
 df = df[(df["score"] <= 10) & (df["score"] >= -10)]
 ```
 
-We will make bars with a score below zero yellow and bars with a score above zero blue, to do this we first create an Array with the same length as our Dataframe.
+We will make bars with a score below zero yellow and bars with a score above zero blue, to do this we first create an `Array` with the same length as our `Dataframe`.
 
-Each element of the Array is a tuple of 3 decimal values representing an RGB color.
+Each element of the `Array` is a tuple of 3 decimal values representing an RGB color.
 
 ```python
 colors = np.array([(0.811, 0.913, 0.145)]*len(df["score"]))
@@ -434,7 +434,7 @@ plt.show()
 
 In previous projects I have used some `NLP`  workflows, such as tokenizing words and sentences, but this time I wanted to do something a bit more complex.
 
-I learned several new things and their best practices. This new knowdledge will come in handy for future projects.
+I learned several new things and their best practices. This new knowledge will come in handy for future projects.
 
 The next steps are to build a `Machine Learning` model for sentiment analysis and evaluate next year's report with it.
 
