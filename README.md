@@ -1,8 +1,8 @@
 # Mexican Government Report Text Analysis
 
-In this repository, I will document the complete process of extracting text from a PDF file, cleaning it, passing it through an `NLP` pipeline and presenting the results with graphs and plots.
+This repository documents the process of extracting text from a PDF, cleaning it, passing it through an `NLP` pipeline, and presenting the results with graphs.
 
-The PDF file is quite special, it is the government report of 2019, which was released the 1st of September. This PDF file can be found in the data folder.
+The PDF is the government report of 2019 that was released on September 1st. The PDF is in the data folder.
 
 ## Requirements
 
